@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>计算器</title>
+</head>
+<body>
+<button onclick="welcome()">欢迎</button>
+<p id="welcome"></p>
+<p>请点击你需要的功能</p>
+<button onclick="calculator()">计算器</button> <button onclick="doTimer()">清空结果</button>
+<p id="result"></p>
+<input type="button" value="开始计数" onclick="doTimer()">
+<input typr="text" id="txt">
+
+
+
+<script>
+//参数
+var x = 0;
+//欢迎功能
+function welcome() {
+ var naem;
+ name = prompt("请输入你的名字:");
+ document.getElementById("welcome").innerHTML = "欢迎" + name + "光临本网站!";
+}
+//计算器功能
+function calculator() {
+ var num1, num2,operator, result;
+ num1 = parseFloat(prompt("请输入第一个数字:"));
+ num2 = parseFloat(prompt("请输入第二个数字:"));
+ operator = prompt("请选择运算符(+,-,*,/):");
+
+ switch (operator) {
+  case "+":
+   result = num1 + num2;
+   break;
+  case "-":
+   result = num1 - num2;
+   break;
+  case "*":
+   result = num1 * num2;
+   break;
+  case "/":
+   result = num1 / num2;
+   break;
+  default:
+   result = "请选择运算符";
+ }
+ document.getElementById("result").innerHTML = "结果：" + num1 + operator + num2 + "=" + result;
+}
+//清空结果功能
+function clearResult() {
+ document.getElementById("result").innerHTML = "";
+}
+//自动计数功能
+var c=0;var t;var time_is_on=0;
+function doTimer() {
+    if(!time_is_on)
+    {
+    time_is_on=1;
+    timeCount();
+    }
+}
+function timeCount() {
+    document.getElementById("txt").value=c;
+    c++;
+    t=setTimeout("timeCount()",1000);
+}
+</script>
+</body>
+</html>
